@@ -8,7 +8,10 @@ class DoctorDAO {
             this._db.all(
                 'SELECT * FROM Doctors',
                 (error, results) => {
-                    if (error) return reject('Could not get doctors');
+                    if (error) {
+                        console.log(error)
+                        return reject('Could not get doctors');
+                    }
                     return resolve(results)
                 }
             );
@@ -30,6 +33,23 @@ class DoctorDAO {
             )
         });
     }
+
+    searchDoctor(id) {
+        return new Promise((resolve, reject) => {
+            this._db.run(`
+            SELECT * FROM Doctors WHERE id = ?`,
+                [id],
+                (error) => {
+                    if (error, result) {
+                        console.log(error);
+                        return reject('Doctor not found');
+                    }
+                    return resolve(result);
+                });
+        });
+    }
+
+
 }
 
 module.exports = DoctorDAO;
