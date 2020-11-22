@@ -12,6 +12,9 @@ class DoctorDAO {
                         console.log(error)
                         return reject('Could not get doctors');
                     }
+                    results.forEach(element => {
+                        console.log(`Results from select all: ${element.name}`);
+                    });
                     return resolve(results)
                 }
             );
@@ -28,6 +31,7 @@ class DoctorDAO {
                         console.log(error);
                         return reject('Could not get doctors');
                     }
+                    console.log(`Saved successfuly doctor ${doctor.name}`);
                     resolve();
                 }
             )
@@ -36,20 +40,20 @@ class DoctorDAO {
 
     searchDoctor(id) {
         return new Promise((resolve, reject) => {
-            this._db.run(`
-            SELECT * FROM Doctors WHERE id = ?`,
-                [id],
-                (error) => {
-                    if (error, result) {
+            this._db.get(`SELECT * FROM Doctors WHERE id = ?`,
+                [parseInt(id)],
+                (error, result) => {
+                    console.log(result);
+                    if (error) {
                         console.log(error);
                         return reject('Doctor not found');
                     }
+                    const a = {}
+                    console.log(`Here it is, doctor ${result}`);
                     return resolve(result);
                 });
         });
     }
-
-
 }
 
 module.exports = DoctorDAO;
