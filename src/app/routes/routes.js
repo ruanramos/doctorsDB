@@ -37,7 +37,6 @@ module.exports = (app) => {
         new DoctorDAO(db).listDoctors()
             .then(
                 (results) => {
-                    console.log(results.id, results.name)
                     response.marko(
                         require('../views/doctors/list/list.marko'),
                         {
@@ -54,7 +53,6 @@ module.exports = (app) => {
 
     app.post("/doctors", (request, response) => {
         const doctor = request.body;
-        console.log(doctor);
         new DoctorDAO(db).saveDoctor(doctor)
             .then(response.redirect('/doctors'))
             .catch(error => console.log(error));
@@ -62,7 +60,6 @@ module.exports = (app) => {
 
     app.get("/doctors/:id", (request, response) => {
         const id = request.params.id;
-        console.log(id);
         new DoctorDAO(db).searchDoctor(id)
             .then(
                 (results) => {

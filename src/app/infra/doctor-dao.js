@@ -12,9 +12,6 @@ class DoctorDAO {
                         console.log(error)
                         return reject('Could not get doctors');
                     }
-                    results.forEach(element => {
-                        console.log(`Results from select all: ${element.name}`);
-                    });
                     return resolve(results)
                 }
             );
@@ -43,12 +40,10 @@ class DoctorDAO {
             this._db.get(`SELECT * FROM Doctors WHERE id = ?`,
                 [parseInt(id)],
                 (error, result) => {
-                    console.log(result);
                     if (error) {
                         console.log(error);
                         return reject('Doctor not found');
                     }
-                    const a = {}
                     console.log(`Here it is, doctor ${result}`);
                     return resolve(result);
                 });
