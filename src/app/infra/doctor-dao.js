@@ -49,6 +49,22 @@ class DoctorDAO {
                 });
         });
     }
+
+    deleteDoctorByID(id) {
+        return new Promise((resolve, reject) => {
+            this._db.run(`DELETE FROM Doctors WHERE id = ?`,
+            [id],
+            (error) => {
+                if(error) {
+                    console.log(error);
+                    return reject('Doctor ID not found');
+                }
+                console.log(`Doctor Deleted successfuly`);
+                resolve();
+            }
+            );
+        });
+    }
 }
 
 module.exports = DoctorDAO;

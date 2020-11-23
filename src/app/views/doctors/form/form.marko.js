@@ -19,11 +19,11 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<h1>Add Doctor</h1><form action=\"/doctors\" method=\"post\"><input type=\"hidden\" id=\"id\" name=\"id\"><div><label for=\"name\">Name:</label><input type=\"text\" id=\"name\" name=\"name\" placeholder=\"Type the doctor's name\"></div><input type=\"submit\" value=\"Save\"></form>");
+  out.w("<h1>Add Doctor</h1><form action=\"/doctors\" method=\"post\"><input type=\"hidden\" id=\"id\" name=\"id\"><div><label for=\"name\">Name:</label><input type=\"text\" id=\"name\" name=\"name\" placeholder=\"Type the doctor's name\"></div><input type=\"submit\" value=\"Save\"></form><form action=\"/doctors\" method=\"delete\"><input type=\"hidden\" id=\"id2\" name=\"id2\"><div><label for=\"docId\">ID:</label><input type=\"number\" id=\"docId\" name=\"docId\" placeholder=\"Type the doctor's id\"></div><input type=\"submit\" value=\"Delete\"></form>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "9");
+  await_reorderer_tag({}, out, __component, "15");
 
   out.w("</body></html>");
 }

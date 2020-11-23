@@ -73,4 +73,11 @@ module.exports = (app) => {
             .catch(error => console.log(error));
     });
 
+    app.delete("/doctors/:id", (request, response) => {
+        const id = request.params.id;
+        new DoctorDAO(db).deleteDoctorByID(id)
+            .then(response.redirect('/doctors'))
+            .catch(error => console.log(error));
+    });
+
 };

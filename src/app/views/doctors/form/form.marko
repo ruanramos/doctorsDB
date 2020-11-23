@@ -13,5 +13,17 @@
 
             <input type="submit" value="Save" />
         </form>
+
+        <form action="/doctors" method="delete">
+            
+            <input type="hidden" id="id2" name="id2" />
+
+            <div>
+                <label for="docId">ID:</label>
+                <input type="number" id="docId" name="docId" placeholder="Type the doctor's id" />
+            </div>
+
+            <input type="submit" value="Delete" />
+        </form>
     </body>
 </html>
